@@ -39,15 +39,15 @@ const connect = async(rabbitSettings)=>{
         console.log(`Received user with email ${userDetails.email}`);
         console.log(userDetails);
 
+
         if(userDetails.user === user){
-            channel.ack(message);
             console.log("Deleted message from queue ...\n");
         }
 
         else{
-            console.log("That message is not for me I'll not delete it");
+            console.log("That message is not for me");
         }
-
+        channel.ack(message);
 
 
     })
